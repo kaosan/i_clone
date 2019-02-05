@@ -1,0 +1,16 @@
+<div class="container">
+<h1>投稿詳細画面</h1>
+
+<p><%= image_tag @image.image.url, class: 'img-responsive center-block' %></p>
+<p><%= @image.content %></p>
+<% unless @image.user_id == current_user.id %>
+        <% if @like.present? %>
+          <%= link_to 'お気に入りを削除する', like_path(id: @like.id), method: :delete, class:'botton' %>
+        <% else %>
+          <%= link_to 'お気に入り', likes_path(image_id: @image.id), method: :post, class:'botton' %>
+        <% end %>
+      <% end %>
+      <br>
+
+      <%= link_to "ブログ一覧画面に戻る", images_path, class:'back_show' %>
+</div>

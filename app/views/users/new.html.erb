@@ -1,0 +1,45 @@
+<div class = "container">
+<h1>登録</h1>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %>
+      prohibited this @user from being saved:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: @user, local: true) do |f| %>
+<div class="sin_up">
+  <%= f.label :名前 %>
+  <%= f.text_field :name %>
+</div>
+<br>
+<div class="sin_up">
+  <%= f.label :メールアドレス %>
+  <%= f.email_field :email %>
+</div>
+<br>
+<div class="sin_up">
+  <%= f.label :パスワード %>
+  <%= f.password_field :password %>
+</div>
+<br>
+<div class="sin_up">
+  <%= f.label :同じパスワードを入力 %>
+  <%= f.password_field :password_confirmation %>
+</div>
+<br>
+<div class = "field">
+  <%= f.label :ユーザー画像 %>
+  <%= image_tag(@user.icon.url, class: 'icon') if @user.icon.url %>
+  <%= f.file_field :icon %>
+  </div>
+  <br>
+<%= f.submit "Create my acount", class: 'botton' %>
+<% end %>
+</div>

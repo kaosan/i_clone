@@ -1,0 +1,33 @@
+<div class = "container">
+  <div class = "t_menu">
+<h1>Top</h1>
+<br>
+<br>
+<% if logged_in? %>
+<li>
+  <a><%= link_to "マイページ", user_path(current_user.id), class: 'a_botton' %></a>
+  </li>
+  <br>
+  <li>
+    <a><%= link_to "投稿一覧", images_path, class: 'b_botton' %></a>
+  </li>
+  <br>
+  <li>
+    <a><%= link_to '投稿画面へ', new_image_path, class: 'a_botton' %></a>
+  </li>
+  <br>
+  <li>
+    <a><%= link_to "ログアウト", session_path(current_user.id), method: :delete, class: 'b_botton' %></a>
+  </li>
+<% else %>
+<br>
+  <li>
+    <a><%= link_to "登録", new_user_path, class: 'a_botton' %></a>
+  </li>
+  <br>
+  <li>
+    <a><%= link_to "ログイン", new_session_path, class: 'b_botton' %></a>
+  </li>
+<% end %>
+</div>
+</div>
