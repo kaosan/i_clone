@@ -53,5 +53,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.delivery_method = :letter_opener_web
-  
+  config.assets.initialize_on_precompile = false
+
+
 end
